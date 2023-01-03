@@ -1,6 +1,8 @@
 use chrono::format::StrftimeItems;
 use chrono::{Local, NaiveDateTime};
-use crate::pretty_date_formatter::PrettyDateFormatter;
+use crate::rules::just_now::JustNowPrettyDateFormatRule;
+use crate::rules::PrettyDateFormatRule;
+use crate::rules::this_year::ThisYearPrettyDateFormatRule;
 
 pub struct PrettyDateFormat<'a> {
     pub rules: Vec<Box<dyn PrettyDateFormatRule>>,
@@ -10,7 +12,10 @@ pub struct PrettyDateFormat<'a> {
 impl<'a> PrettyDateFormat<'a> {
     pub fn default() -> PrettyDateFormat<'a> {
         PrettyDateFormat {
-            rules: vec![Box::new(JustNowPrettyDateFormatRule::new())],
+            rules: vec![
+                Box::new(JustNowPrettyDateFormatRule::new( 60 )),
+                Box::new(ThisYearPrettyDateFormatRule::new()),
+            ],
             default_format: "%-e %B %Y, %H:%M",
         }
     }
@@ -33,26 +38,5 @@ impl<'a> PrettyDateFormat<'a> {
     }
 }
 
-pub trait PrettyDateFormatRule {
-    fn does_match(&self, date: &NaiveDateTime, reference_date: &NaiveDateTime) -> bool;
-    fn format<'a>(&self) -> StrftimeItems<'a>;
-}
 
-struct JustNowPrettyDateFormatRule {}
 
-impl JustNowPrettyDateFormatRule {
-    pub fn new() -> JustNowPrettyDateFormatRule {
-        JustNowPrettyDateFormatRule {}
-    }
-}
-
-impl PrettyDateFormatRule for JustNowPrettyDateFormatRule {
-    fn does_match(&self, date: &NaiveDateTime, reference_date: &NaiveDateTime) -> bool {
-        let time_diff = reference_date.timestamp_millis() - date.timestamp_millis();
-        time_diff < 60000
-    }
-
-    fn format<'a>(&self) -> StrftimeItems<'a> {
-        StrftimeItems::new("Just now")
-    }
-}
