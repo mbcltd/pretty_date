@@ -11,7 +11,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-pretty_date = "0.1.0"
+pretty_date = "0.1.1"
 ```
 
 Basic default usage:
