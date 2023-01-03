@@ -7,19 +7,6 @@ pub struct PrettyDateFormat<'a> {
 }
 
 impl PrettyDateFormat<'_> {
-    pub fn default() -> PrettyDateFormat<'static> {
-        PrettyDateFormat {
-            rules: vec![
-                PrettyDateRule::JustNow { minutes: 60 },
-                PrettyDateRule::Today,
-                PrettyDateRule::Yesterday,
-                PrettyDateRule::ThisWeek,
-                PrettyDateRule::ThisYear,
-            ],
-            default_format: "%-e %B %Y, %H:%M",
-        }
-    }
-
     pub fn format_pretty_with_reference(&self, date: &NaiveDateTime, reference_date: &NaiveDateTime) -> String {
         let matching_rule =
             self

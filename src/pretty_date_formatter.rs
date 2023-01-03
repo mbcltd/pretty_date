@@ -29,7 +29,7 @@ impl PrettyDateFormatter for NaiveDateTime {
     }
 
     fn format_pretty_with_reference(&self, reference_date: &NaiveDateTime) -> String {
-        DEFAULT_FORMAT.format_pretty_with_reference(&self, &reference_date)
+        DEFAULT_FORMAT.format_pretty_with_reference(self, reference_date)
     }
 }
 
