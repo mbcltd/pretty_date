@@ -1,8 +1,10 @@
 use chrono::format::StrftimeItems;
 use chrono::{Local, NaiveDateTime};
+use crate::rules::today::TodayPrettyDateFormatRule;
 use crate::rules::just_now::JustNowPrettyDateFormatRule;
 use crate::rules::PrettyDateFormatRule;
 use crate::rules::this_year::ThisYearPrettyDateFormatRule;
+use crate::rules::yesterday::YesterdayPrettyDateFormatRule;
 
 pub struct PrettyDateFormat<'a> {
     pub rules: Vec<Box<dyn PrettyDateFormatRule>>,
@@ -13,7 +15,9 @@ impl<'a> PrettyDateFormat<'a> {
     pub fn default() -> PrettyDateFormat<'a> {
         PrettyDateFormat {
             rules: vec![
-                Box::new(JustNowPrettyDateFormatRule::new( 60 )),
+                Box::new(JustNowPrettyDateFormatRule::new(60)),
+                Box::new(TodayPrettyDateFormatRule::new()),
+                Box::new(YesterdayPrettyDateFormatRule::new()),
                 Box::new(ThisYearPrettyDateFormatRule::new()),
             ],
             default_format: "%-e %B %Y, %H:%M",
