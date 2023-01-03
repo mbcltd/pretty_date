@@ -52,7 +52,7 @@ mod tests {
             NaiveDateTime::parse_from_str("2015-09-05 23:56:05", "%Y-%m-%d %H:%M:%S")
                 .unwrap();
 
-        assert_eq!(date.format_pretty_with_reference(&reference_date), "20:56 Today");
+        assert_eq!(date.format_pretty_with_reference(&reference_date), "20:56 today");
     }
 
     #[test]
@@ -65,7 +65,7 @@ mod tests {
             NaiveDateTime::parse_from_str("2015-09-06 23:56:05", "%Y-%m-%d %H:%M:%S")
                 .unwrap();
 
-        assert_eq!(date.format_pretty_with_reference(&reference_date), "20:56 Yesterday");
+        assert_eq!(date.format_pretty_with_reference(&reference_date), "20:56 yesterday");
     }
 
     #[test]
@@ -78,7 +78,7 @@ mod tests {
             NaiveDateTime::parse_from_str("2015-09-01 23:56:05", "%Y-%m-%d %H:%M:%S")
                 .unwrap();
 
-        assert_eq!(date.format_pretty_with_reference(&reference_date), "20:56 Yesterday");
+        assert_eq!(date.format_pretty_with_reference(&reference_date), "20:56 yesterday");
     }
 
     #[test]

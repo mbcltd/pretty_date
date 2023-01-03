@@ -12,7 +12,7 @@ lazy_static! {
     static ref DEFAULT_FORMAT: PrettyDateFormat<'static> = {
         PrettyDateFormat {
             rules: vec![
-                PrettyDateRule::JustNow { minutes: 60 },
+                PrettyDateRule::JustNow { minutes: 10 },
                 PrettyDateRule::Today,
                 PrettyDateRule::Yesterday,
                 PrettyDateRule::ThisWeek,
@@ -24,10 +24,12 @@ lazy_static! {
 }
 
 impl PrettyDateFormatter for NaiveDateTime {
+    /// Human friendly formatting of this date with reference to the current local system time
     fn format_pretty(&self) -> String {
         self.format_pretty_with_reference(&Local::now().naive_local())
     }
 
+    /// Human friendly formatting of this date with reference to a specific date
     fn format_pretty_with_reference(&self, reference_date: &NaiveDateTime) -> String {
         DEFAULT_FORMAT.format_pretty_with_reference(self, reference_date)
     }
