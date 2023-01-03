@@ -5,7 +5,16 @@ A rust library for the simple, friendly, human readable formatting for the chron
 - Earlier today: `20:56 Today`
 - Earlier in the year: `5 September, 23:56`
 
-Basic usage:
+# Usage
+
+Add this to your `Cargo.toml`:
+
+```toml
+[dependencies]
+pretty_date = "0.1.0"
+```
+
+Basic default usage:
 ```rust
 use chrono::NaiveDateTime;
 use pretty_date::pretty_date_formatter::PrettyDateFormatter;
@@ -33,17 +42,6 @@ fn main() {
     };
     println!("{}", date_format.format_pretty(&date));
 }
-```
-
-# Usage
-
-## Usage
-
-Add this to your `Cargo.toml`:
-
-```toml
-[dependencies]
-pretty_date = "0.1.0"
 ```
 
 # License
