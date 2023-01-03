@@ -3,6 +3,7 @@ name = "pretty_date"
 version = "0.1.0"
 edition = "2021"
 authors = ["david@morgan-brown.com"]
+description = "A rust library for the simple, friendly, human readable formatting for the chrono NaiveDateTime"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 homepage = "https://github.com/mbcltd/pretty_date"
