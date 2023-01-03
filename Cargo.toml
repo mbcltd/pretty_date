@@ -9,7 +9,7 @@ readme = "README.md"
 homepage = "https://github.com/mbcltd/pretty_date"
 documentation = "https://github.com/mbcltd/pretty_date"
 repository = "https://github.com/mbcltd/pretty_date"
-keywords = ["date", "pretty print"]
+keywords = ["date", "pretty-print"]
 categories = ["date-and-time", "value-formatting"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
