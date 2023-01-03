@@ -4,7 +4,7 @@ mod tests {
     use crate::pretty_date_formatter::PrettyDateFormatter;
 
     #[test]
-    fn test_basic_date() {
+    fn test_basic_date_1() {
         let date =
             NaiveDateTime::parse_from_str("2015-09-05 23:56:04", "%Y-%m-%d %H:%M:%S")
                 .unwrap();
@@ -14,6 +14,19 @@ mod tests {
                 .unwrap();
 
         assert_eq!(date.format_pretty_with_reference(&reference_date), "5 September 2015, 23:56");
+    }
+
+    #[test]
+    fn test_basic_date_2() {
+        let date =
+            NaiveDateTime::parse_from_str("2015-08-30 20:56:04", "%Y-%m-%d %H:%M:%S")
+                .unwrap();
+
+        let reference_date =
+            NaiveDateTime::parse_from_str("2016-09-06 23:56:05", "%Y-%m-%d %H:%M:%S")
+                .unwrap();
+
+        assert_eq!(date.format_pretty_with_reference(&reference_date), "30 August 2015, 20:56");
     }
 
     #[test]
@@ -66,6 +79,19 @@ mod tests {
                 .unwrap();
 
         assert_eq!(date.format_pretty_with_reference(&reference_date), "20:56 Yesterday");
+    }
+
+    #[test]
+    fn this_week() {
+        let date =
+            NaiveDateTime::parse_from_str("2015-08-31 20:56:04", "%Y-%m-%d %H:%M:%S")
+                .unwrap();
+
+        let reference_date =
+            NaiveDateTime::parse_from_str("2015-09-06 23:56:05", "%Y-%m-%d %H:%M:%S")
+                .unwrap();
+
+        assert_eq!(date.format_pretty_with_reference(&reference_date), "20:56 Monday");
     }
 
     #[test]

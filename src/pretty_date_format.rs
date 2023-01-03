@@ -3,6 +3,7 @@ use chrono::{Local, NaiveDateTime};
 use crate::rules::today::TodayPrettyDateFormatRule;
 use crate::rules::just_now::JustNowPrettyDateFormatRule;
 use crate::rules::PrettyDateFormatRule;
+use crate::rules::this_week::ThisWeekPrettyDateFormatRule;
 use crate::rules::this_year::ThisYearPrettyDateFormatRule;
 use crate::rules::yesterday::YesterdayPrettyDateFormatRule;
 
@@ -18,6 +19,7 @@ impl<'a> PrettyDateFormat<'a> {
                 Box::new(JustNowPrettyDateFormatRule::new(60)),
                 Box::new(TodayPrettyDateFormatRule::new()),
                 Box::new(YesterdayPrettyDateFormatRule::new()),
+                Box::new(ThisWeekPrettyDateFormatRule::new()),
                 Box::new(ThisYearPrettyDateFormatRule::new()),
             ],
             default_format: "%-e %B %Y, %H:%M",
