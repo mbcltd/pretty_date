@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tests {
     use chrono::NaiveDateTime;
-    use crate::PrettyDateFormat;
+    use crate::pretty_date_formatter::PrettyDateFormatter;
 
     #[test]
     fn test_basic_date() {
